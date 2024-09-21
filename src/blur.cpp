@@ -37,7 +37,7 @@
 
 #include <KDecoration2/Decoration>
 
-Q_LOGGING_CATEGORY(KWIN_BLUR, "kwin_effect_forceblur", QtWarningMsg)
+Q_LOGGING_CATEGORY(KWIN_BLUR, "kwin_better_blur", QtWarningMsg)
 
 static void ensureResources()
 {
@@ -549,7 +549,7 @@ bool BlurEffect::enabledByDefault()
 
 bool BlurEffect::supported()
 {
-#if KWIN_6_0
+#ifdef KWIN_6_0
     return effects->isOpenGLCompositing() && GLFramebuffer::supported() && GLFramebuffer::blitSupported();
 #else
     return effects->openglContext() && effects->openglContext()->supportsBlits();
